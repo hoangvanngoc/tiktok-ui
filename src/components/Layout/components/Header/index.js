@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 import images from  '~/assets/images';
 import { wrapper as PropperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -52,7 +53,11 @@ function Header() {
                     </button>
                 </div>
             </Tippy>
-            <div className={cx('actions')}></div>
+            
+            <div className={cx('actions')}>
+                <Button text Children='Upload' to={'/login'}></Button>
+                <Button primary disabled Children='Login' onClick={() => {}}></Button>
+            </div>
         </div>
     </header>
 }
