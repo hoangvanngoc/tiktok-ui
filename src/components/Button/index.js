@@ -11,8 +11,12 @@ function Button({ to,
      small = false,
      large =  false,
      text = false,
+     rounded = false,
      disabled = false,
+     leftIcon,
+     rightIcon,
      Children,
+     className,
      onClick,
      passProps }) {
     let Comp = 'button'
@@ -39,17 +43,23 @@ function Button({ to,
     }
 
     const classes = cx('wrapper', {
+        [className]: className,
         primary,
         outline,
         small,
         large,
         text,
-        disabled
+        leftIcon,
+        rightIcon,
+        disabled,
+        rounded
     })
 
     return (
         <Comp className={classes} {...props}>
-            <span>{Children}</span>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+                <span className={cx('title')}>{Children}</span> 
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     )
 }

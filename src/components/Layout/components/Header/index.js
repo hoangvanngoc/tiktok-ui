@@ -56,7 +56,7 @@ function Header() {
             
             <div className={cx('actions')}>
                 <Button text Children='Upload' to={'/login'}></Button>
-                <Button primary disabled Children='Login' onClick={() => {}}></Button>
+                <Button primary  className={cx('custom-login')} Children='Login'></Button>
             </div>
         </div>
     </header>
