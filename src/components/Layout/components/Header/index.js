@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
@@ -8,6 +8,7 @@ import images from  '~/assets/images';
 import { wrapper as PropperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Propper/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -57,6 +58,12 @@ function Header() {
             <div className={cx('actions')}>
                 <Button text Children='Upload' to={'/login'}></Button>
                 <Button primary  className={cx('custom-login')} Children='Login'></Button>
+
+                 <Menu> 
+                    <button className={cx('more-btn')}>
+                        <FontAwesomeIcon icon={faEllipsisVertical}/>
+                    </button>
+                </Menu>
             </div>
         </div>
     </header>
