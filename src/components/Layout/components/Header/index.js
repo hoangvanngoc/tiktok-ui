@@ -9,13 +9,29 @@ import { wrapper as PropperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
+import MenuItem from '~/components/Propper/Menu/MenuItem';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia}/>,
-        title: 'English'
+        title: 'English',
+        submenu: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt'
+                }
+            ]
+        }
     },
      {
         icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
@@ -35,6 +51,18 @@ function Header() {
             setSearchResult([1,2,3])
         }, 0)
     }, [])
+
+    // handle logic
+    const handleMenuChange = (menuItem) => {
+        switch(menuItem.type) {
+            case 'language': 
+                //handle change language
+                break;
+
+            default:
+                // handle default
+        }
+    }
 
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
@@ -75,7 +103,7 @@ function Header() {
                 <Button text to={'/login'}>Upload</Button>
                 <Button primary  className={cx('custom-login')} >Login</Button>
 
-                 <Menu items={MENU_ITEMS}> 
+                 <Menu items={MENU_ITEMS} onChange={handleMenuChange}> 
                     <button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical}/>
                     </button>
