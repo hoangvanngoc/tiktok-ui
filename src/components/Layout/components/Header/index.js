@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAsia, faCircleQuestion, faKeyboard, faCloudUpload, faMessage } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faEllipsisVertical, faEarthAsia, faCircleQuestion, faKeyboard, faCloudUpload, faMessage, faUser, faCoins, faGear, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import TippyHeadless from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
@@ -68,6 +68,32 @@ function Header() {
         }
     }
 
+    const userMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser}/>,
+            title: 'View Profile',
+            to: '/@hoaa'
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins}/>,
+            title: 'Get coins',
+            to: '/coin'
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear}/>,
+            title: 'Setting',
+            to: '/setting'
+        },
+        ...MENU_ITEMS
+        ,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut}/>,
+            title: 'Log out',
+            to: '/logout',
+            separate: true
+        },
+    ]
+
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
             <div className={cx('logo')}>
@@ -106,7 +132,7 @@ function Header() {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Tippy content="Upload video" placement='bottom'>
+                        <Tippy delay={[0, 300]} content="Upload video" placement='bottom'>
                             <button className={cx('action-btn')}>
                                 <FontAwesomeIcon icon={faCloudUpload}/>
                             </button>
@@ -119,7 +145,7 @@ function Header() {
                 </>
                 )}
 
-                <Menu items={MENU_ITEMS} onChange={handleMenuChange}> 
+                <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}> 
                     {currentUser ? (
                         <img className={cx('user-avatar')} src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/bbfa12c70df471c7ce9fa957eb05e354~c5_100x100.jpeg?x-expires=1657000800&x-signature=HgA9NJ%2B0zSMvCL1iuhvvjpzfk4Q%3D' alt='Nguyen van a'/>
                     ) : (
