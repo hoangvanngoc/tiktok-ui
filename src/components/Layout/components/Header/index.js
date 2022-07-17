@@ -12,7 +12,7 @@ import { wrapper as PropperWrapper } from '~/components/Propper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
-import MenuItem from '~/components/Propper/Menu/MenuItem';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -147,7 +147,10 @@ function Header() {
 
                 <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}> 
                     {currentUser ? (
-                        <img className={cx('user-avatar')} src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/bbfa12c70df471c7ce9fa957eb05e354~c5_100x100.jpeg?x-expires=1657000800&x-signature=HgA9NJ%2B0zSMvCL1iuhvvjpzfk4Q%3D' alt='Nguyen van a'/>
+                        <Image 
+                        className={cx('user-avatar')} 
+                        fallback='https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                        src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/bbfa12c70df471c7ce9fa957eb05e354~c5_100x100.jpeg?x-expires=1657000800&x-signature=HgA9NJ%2B0zSMvCL1iuhvvjpzfk4Q%3D' alt='Nguyen van a'/>
                     ) : (
                     <button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical}/>
